@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oms-inventory
+  namespace: app
+  labels:
+    app: oms-inventory
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oms-inventory
+  template:
+    metadata:
+      labels:
+        app: oms-inventory
+    spec:
+      containers:
+      - name: oms-inventory
+        image: manishsrivastavaggn/oms-inventory:changeMePlease
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
